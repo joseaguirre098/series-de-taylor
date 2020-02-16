@@ -1,0 +1,75 @@
+package serieTaylorCos;
+
+import seriesTaylor.factorial;
+
+public class cos {
+	public double senx(double val) {
+		int contador=1;
+		double potencia1=1;
+		double potencia2=3;
+		double y;
+		double sumpositiva=0.0;
+		double sumnegativa=0.0;
+		
+		factorial fact = new factorial();
+		do {
+			sumpositiva=sumpositiva-(Math.pow(val ,  potencia1))/fact.calcular_factorial(potencia1);
+			potencia1+=4;
+			sumnegativa=sumnegativa+(Math.pow(val ,  potencia2))/fact.calcular_factorial(potencia2);
+			potencia2+=4;
+			contador++;
+		}while(contador<4);
+		y=sumpositiva+sumnegativa;
+		return y;
+}
+	
+		
+	}
+/////////////////////////////////////////////////////////////////////
+package serieTaylorCos;
+
+public class factorial {
+public int calcular_factorialCos(double n) {
+	int f=1;
+	for(int i=1;i<=n;i++) {
+		f=f*i;
+	}
+	return f;
+}
+}
+/////////////////////////////////////////////////////////////////////
+package serieTaylorCos;
+import java.util.Scanner;
+public class taylor {
+	public static void main(String [] args) {
+		double x,y;
+		
+		cos coseno= new cos();
+		
+		Scanner val= new Scanner(System.in);
+		System.out.printf("digite el valor:");
+		double g=val.nextDouble();
+		x=g*3.141592/180.0;
+		y=coseno.senx(x);
+		System.out.println("cos("+ g +")="+y);
+	}
+
+}
+////////////////////////////////////////////////////////////
+package serieTaylorCos;
+import java.util.Scanner;
+public class taylorCoseno {
+	public static void main(String [] args) {
+		double x,y;
+		
+		cos coseno= new cos();
+		
+		Scanner val= new Scanner(System.in);
+		System.out.printf("digite el valor:");
+		double g=val.nextDouble();
+		x=g*3.141592/180.0;
+		y=coseno.senx(x);
+		System.out.println("cos("+ g +")="+y);
+	}
+
+}
