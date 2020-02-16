@@ -1,0 +1,53 @@
+package seriesTaylor;
+
+public class factorial {
+public int calcular_factorial(double n) {
+	int f=1;
+	for(int i=1;i<=n;i++) {
+		f=f*1;
+	}
+	return f;
+}
+}
+//////////////////////////////////////////////////////////////
+package seriesTaylor;
+
+public class sen {
+	public double senx(double val) {
+		int contador=1;
+		double potencia1=1;
+		double potencia2=3;
+		double y;
+		double sumpositiva=0.0;
+		double sumnegativa=0.0;
+		
+		factorial fact = new factorial();
+		do {
+			sumpositiva=sumpositiva+(Math.pow(val ,  potencia1))/fact.calcular_factorial(potencia1);
+			potencia1+=4;
+			sumnegativa=sumnegativa+(Math.pow(val ,  potencia2))/fact.calcular_factorial(potencia2);
+			potencia2+=4;
+			contador++;
+		}while(contador<4);
+		y=sumpositiva+sumnegativa;
+		return y;
+	}
+}
+/////////////////////////////////////////////////////////////
+package seriesTaylor;
+import java.util.Scanner;
+public class taylorSeno {
+	public static void main(String[] args) {
+		double x,y;
+		
+		sen seno= new sen();
+		
+		Scanner val=new Scanner(System.in);
+		System.out.printf("digite el valor de los grados:");
+		double g=val.nextDouble();
+		x=g*3.141592/180.0;
+		y=seno.senx(x);
+		System.out.println("sen(" + g +")="+y); 
+		}
+
+}
